@@ -1,0 +1,12 @@
+export const Colors = {
+	mainBackground: '#020303',
+	itemBackground: 'rgba(235,240,242, 0.15)',
+	inputBackground: '#121414',
+	titleDark: '#171A1A',
+	title: '#EBF0F2',
+	text: '#BABEBF',
+	textDisabled: '#707273',
+	green: '#32A856',
+	red: '#B24749',
+	blue: '#5677BF',
+};

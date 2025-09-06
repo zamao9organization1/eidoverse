@@ -1,7 +1,10 @@
+import SidebarTabs from '@/components/ui/sidebarTabs';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync(); // Preventing automatic hiding of the splash screen
 
@@ -22,5 +25,17 @@ export default function RootLayout() {
 		return null; // Show custom loader while loading fonts
 	}
 
-	return <Stack />;
+	const { top } = useSafeAreaInsets(); // Statusbar height
+
+	return (
+		<>
+			<StatusBar barStyle='light-content' backgroundColor='#020303' />
+			<SafeAreaView style={{ flex: 1, paddingTop: top, backgroundColor: '#020303' }}>
+				<Stack screenOptions={{ headerShown: false, animation: 'none' }} />
+
+				{/* Tabs navigation (sidebar) */}
+				<SidebarTabs />
+			</SafeAreaView>
+		</>
+	);
 }

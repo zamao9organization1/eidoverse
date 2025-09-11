@@ -1,5 +1,5 @@
 // app/(tabs)/_layout.tsx
-import { IconHome, IconWallet } from '@/components/ui/Icons';
+import { IconHome, IconTasks, IconWallet } from '@/components/ui/icons';
 import VerticalTabBar from '@/components/ui/verticalTabBar';
 import { Colors } from '@/constants/colors';
 import { Tabs } from 'expo-router';
@@ -33,6 +33,19 @@ export default function TabsLayout() {
 				options={{
 					tabBarIcon: ({ focused }) => (
 						<IconWallet
+							stroke={focused === true ? Colors.mainBackground : Colors.text}
+							fill={focused === true ? Colors.mainBackground : Colors.text}
+						/>
+					),
+				}}
+			/>
+
+			{/* Tab "Tasks" */}
+			<Tabs.Screen
+				name='tasks'
+				options={{
+					tabBarIcon: ({ focused }) => (
+						<IconTasks
 							stroke={focused === true ? Colors.mainBackground : Colors.text}
 							fill={focused === true ? Colors.mainBackground : Colors.text}
 						/>

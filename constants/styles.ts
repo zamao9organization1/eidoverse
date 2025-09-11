@@ -7,7 +7,7 @@ export const stylesGLobal = StyleSheet.create({
 		flex: 1,
 		paddingTop: 140,
 		paddingRight: 30,
-		paddingBottom: 0,
+		paddingBottom: 32,
 		paddingLeft: 15,
 		backgroundColor: Colors.mainBackground,
 	},
@@ -30,6 +30,9 @@ export const stylesGLobal = StyleSheet.create({
 	},
 
 	// TABS
+	tabs: {
+		backgroundColor: Colors.itemBackground,
+	},
 	tab: {
 		flex: 1,
 		alignItems: 'center',
@@ -53,6 +56,24 @@ export const stylesGLobal = StyleSheet.create({
 	},
 
 	// PAGINATION
+	paginationWrapper: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		marginTop: 32,
+		gap: 10,
+		marginRight: 'auto',
+		marginLeft: 'auto',
+		backgroundColor: Colors.itemBackground,
+	},
+	pagination: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		width: 312,
+		gap: 10,
+		marginRight: 'auto',
+		marginLeft: 'auto',
+		backgroundColor: Colors.itemBackground,
+	},
 	paginationButton: {
 		width: 40,
 		height: 40,
@@ -71,6 +92,6 @@ export const stylesGLobal = StyleSheet.create({
 	},
 	paginationCounter: {
 		width: 100,
-		backgroundColor: Colors.itemBackground,
+		backgroundColor: Colors.inputBackground,
 	},
 });

@@ -30,25 +30,35 @@ export const stylesGLobal = StyleSheet.create({
 	},
 
 	// TABS
-	tabs: {
+	tabsWrapper: {
+		padding: 6,
+		marginBottom: 10,
 		backgroundColor: Colors.itemBackground,
+		borderRadius: 15,
 	},
-	tab: {
+	tabs: {
+		flexDirection: 'row',
+		gap: 10,
+		minHeight: 52,
+		padding: 6,
+		backgroundColor: Colors.itemBackground,
+		borderRadius: 10,
+	},
+	tabsItem: {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		borderRadius: 10,
 		paddingTop: 11,
 		paddingRight: 16,
 		paddingBottom: 11,
 		paddingLeft: 16,
-	},
-	tabIsActive: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: Colors.title,
 		borderRadius: 10,
+	},
+	tabsItemIsActive: {
+		backgroundColor: Colors.title,
+	},
+	tabsItemActiveText: {
+		color: Colors.mainBackground,
 	},
 
 	bgTransparent: {
@@ -64,6 +74,8 @@ export const stylesGLobal = StyleSheet.create({
 		marginRight: 'auto',
 		marginLeft: 'auto',
 		backgroundColor: Colors.itemBackground,
+		borderRadius: 15,
+		padding: 6,
 	},
 	pagination: {
 		flexDirection: 'row',
@@ -73,6 +85,8 @@ export const stylesGLobal = StyleSheet.create({
 		marginRight: 'auto',
 		marginLeft: 'auto',
 		backgroundColor: Colors.itemBackground,
+		borderRadius: 10,
+		padding: 6,
 	},
 	paginationButton: {
 		width: 40,
@@ -83,15 +97,14 @@ export const stylesGLobal = StyleSheet.create({
 		borderRadius: 10,
 	},
 	paginationButtonIsDisabled: {
-		width: 40,
-		height: 40,
-		justifyContent: 'center',
-		alignItems: 'center',
 		backgroundColor: 'transparent',
-		borderRadius: 10,
 	},
 	paginationCounter: {
 		width: 100,
+		height: 40,
+		justifyContent: 'center',
+		alignItems: 'center',
 		backgroundColor: Colors.inputBackground,
+		borderRadius: 10,
 	},
 });

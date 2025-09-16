@@ -13,7 +13,7 @@ export default function VerticalTabBar({ state, descriptors, navigation }: Botto
 			style={[containerIsActive === true ? styles.containerIsActive : styles.container]}
 			onPress={() => setContainerIsActive(true)}
 		>
-			<View style={[styles.tabsWrapper]}>
+			<View style={[styles.navigation]}>
 				{state.routes.map((route, index) => {
 					// Getting screen options (icon, label, availability, etc.)
 					const { options } = descriptors[route.key]; // ?
@@ -38,7 +38,7 @@ export default function VerticalTabBar({ state, descriptors, navigation }: Botto
 								} // We proceed only if the tab is not active and the event has not been canceled.
 								setContainerIsActive(false);
 							}}
-							style={[styles.tab, isActive && styles.tabIsActive]} // Tab style
+							style={[styles.navigationItem, isActive && styles.navigationItemIsActive]} // Tab style
 						>
 							{/* We display the icon if it is set */}
 							{Icon && <Icon focused={isActive} color={''} size={24} />}
@@ -83,20 +83,20 @@ const styles = StyleSheet.create({
 		paddingBottom: 160,
 		paddingLeft: 6,
 	},
-	tabsWrapper: {
+	navigation: {
 		padding: 6,
 		gap: 10,
 		backgroundColor: Colors.itemBackground,
 		borderRadius: 15,
 	},
-	tab: {
+	navigationItem: {
 		width: 40,
 		height: 40,
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 10,
 	},
-	tabIsActive: {
+	navigationItemIsActive: {
 		backgroundColor: Colors.title,
 	},
 });

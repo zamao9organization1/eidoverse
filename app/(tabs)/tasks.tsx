@@ -1,4 +1,4 @@
-import TasksTabs from '@/components/ui/tasksTabs';
+import TasksTabs from '@/components/ui/TasksTabs';
 import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';

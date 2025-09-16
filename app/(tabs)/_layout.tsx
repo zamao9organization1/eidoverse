@@ -1,6 +1,6 @@
 // app/(tabs)/_layout.tsx
-import { IconHome, IconTasks, IconWallet } from '@/components/ui/icons';
-import VerticalTabBar from '@/components/ui/verticalTabBar';
+import { IconHome, IconTasks, IconWallet } from '@/components/ui/Icons';
+import VerticalTabBar from '@/components/ui/VerticalTabBar';
 import { Colors } from '@/constants/colors';
 import { Tabs } from 'expo-router';
 

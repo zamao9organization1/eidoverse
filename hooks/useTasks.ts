@@ -1,6 +1,16 @@
 // hooks/useTasks.ts
-import { TasksInterface } from '@/types/tasks';
 import { useEffect, useState } from 'react';
+
+export interface TasksInterface {
+	title: string;
+	id: number;
+	groupName: string;
+	progress: string;
+	isDone: boolean;
+	description: string;
+	price: string;
+	date: string;
+}
 
 export const useTasks = (filterDone: boolean | null = null) => {
 	// State: array of tasks

@@ -18,7 +18,7 @@ export const stylesGLobal = StyleSheet.create({
 		borderStyle: 'solid',
 	},
 
-	// BORDER RADIUS
+	// Border radius
 	rounded: {
 		borderRadius: 15,
 	},
@@ -29,7 +29,7 @@ export const stylesGLobal = StyleSheet.create({
 		borderRadius: 6,
 	},
 
-	// TABS
+	// Tabs
 	tabsWrapper: {
 		padding: 6,
 		marginBottom: 10,
@@ -65,7 +65,7 @@ export const stylesGLobal = StyleSheet.create({
 		backgroundColor: 'transparent',
 	},
 
-	// PAGINATION
+	// Pagination
 	paginationWrapper: {
 		flexDirection: 'row',
 		justifyContent: 'center',

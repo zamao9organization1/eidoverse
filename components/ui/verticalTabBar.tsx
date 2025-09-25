@@ -7,6 +7,8 @@ import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
 export default function VerticalTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 	// Tabs container state
 	const [containerIsActive, setContainerIsActive] = useState<boolean>(false);
+	// List of tab routes that should be visible in the custom tab bar
+	const visibleTabNames = ['index', 'wallet', 'tasks', 'settings'];
 
 	return (
 		<TouchableOpacity
@@ -15,8 +17,12 @@ export default function VerticalTabBar({ state, descriptors, navigation }: Botto
 		>
 			<View style={[styles.navigation]}>
 				{state.routes.map((route, index) => {
+					// Skip rendering hidden tabs (e.g. profileSettings) in the tab bar
+					if (!visibleTabNames.includes(route.name)) return null;
+
 					// Getting screen options (icon, label, availability, etc.)
-					const { options } = descriptors[route.key]; // ?
+					const { options } = descriptors[route.key];
+
 					// Index current active tab
 					const isActive = state.index === index;
 					// The icon that we passed in options.tabBarIcon.

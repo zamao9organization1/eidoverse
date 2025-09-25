@@ -52,25 +52,25 @@ export default function RootLayout() {
 						headerShown: false,
 					}}
 				/>
+
+				{/* Profile button wrapper */}
+				<View style={[styles.buttonWrapper, { top: insets.top + 30 }]}>
+					{/* Profile button */}
+					<TouchableOpacity
+						onPress={handleMenuButtonPress}
+						style={[styles.button, visible && styles.buttonIsActive]}
+					>
+						<IconProfile
+							stroke={visible ? Colors.mainBackground : Colors.text}
+							fill={visible ? Colors.mainBackground : Colors.text}
+							size={24}
+						/>
+					</TouchableOpacity>
+				</View>
+
+				{/* Profile context menu */}
+				<ProfileContextMenu visible={visible} onClose={hideMenu} />
 			</SafeAreaView>
-
-			{/* Profile button wrapper */}
-			<View style={[styles.buttonWrapper, { top: insets.top + 30 }]}>
-				{/* Profile button */}
-				<TouchableOpacity
-					onPress={handleMenuButtonPress}
-					style={[styles.button, visible && styles.buttonIsActive]}
-				>
-					<IconProfile
-						stroke={visible ? Colors.mainBackground : Colors.text}
-						fill={visible ? Colors.mainBackground : Colors.text}
-						size={24}
-					/>
-				</TouchableOpacity>
-			</View>
-
-			{/* Profile context menu */}
-			<ProfileContextMenu visible={visible} onClose={hideMenu} />
 		</>
 	);
 }

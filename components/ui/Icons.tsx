@@ -97,13 +97,13 @@ const IconLink = ({ stroke = 'none', fill = 'none', size = 24, ...props }: Props
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>
-		<path
+		<Path
 			d='M14.9855 9.01441L9.0144 14.9855'
 			stroke={stroke}
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		/>
-		<path
+		<Path
 			d='M16.4783 13.4928L18.7175 11.2536C20.3664 9.60474 20.3664 6.93138 18.7175 5.2825V5.2825C17.0686 3.63362 14.3953 3.63362 12.7464 5.2825L10.5072 7.52167'
 			stroke={stroke}
 			strokeLinecap='round'

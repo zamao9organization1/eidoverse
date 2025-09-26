@@ -34,7 +34,7 @@ export default function ProfileSettings() {
 
 	return (
 		<View style={[stylesGLobal.container]}>
-			<Text style={[typographyGlobal.titleH1, styles.mb32]}>Profile settings</Text>
+			<Text style={[typographyGlobal.titleH1, styles.mt48, styles.mb32]}>Profile settings</Text>
 
 			{/* Profile user wrapper */}
 			<View style={[styles.userWrapper, styles.mb32]}>
@@ -108,6 +108,9 @@ export const styles = StyleSheet.create({
 	settingsItem: {
 		flexDirection: 'row',
 		gap: 10,
+	},
+	mt48: {
+		marginTop: 48,
 	},
 	mb32: {
 		marginBottom: 32,

@@ -9,8 +9,7 @@ export default function Tasks() {
 	return (
 		<View style={[styles.container]}>
 			<View style={[stylesGLobal.container]}>
-				{/* Title */}
-				<Text style={[typographyGlobal.titleH1, styles.mb32]}>Tasks</Text>
+				<Text style={[typographyGlobal.titleH1, styles.mt48, styles.mb32]}>Tasks</Text>
 
 				{/* Tabs With All Content of Tasks */}
 				<TasksTabs />
@@ -23,6 +22,9 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Colors.mainBackground,
+	},
+	mt48: {
+		marginTop: 48,
 	},
 	mb32: {
 		marginBottom: 32,

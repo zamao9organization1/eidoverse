@@ -1,5 +1,5 @@
 // app/(tabs)/_layout.tsx
-import { IconHome, IconTasks, IconWallet } from '@/components/ui/Icons';
+import { IconHome, IconSettings, IconTasks, IconWallet } from '@/components/ui/Icons';
 import VerticalTabBar from '@/components/ui/VerticalTabBar';
 import { Colors } from '@/constants/colors';
 import { Tabs } from 'expo-router';
@@ -50,6 +50,37 @@ export default function TabsLayout() {
 							fill={focused === true ? Colors.mainBackground : Colors.text}
 						/>
 					),
+				}}
+			/>
+
+			{/* Tab "Settings" */}
+			<Tabs.Screen
+				name='settings'
+				options={{
+					tabBarIcon: ({ focused }) => (
+						<IconSettings
+							stroke={focused === true ? Colors.mainBackground : Colors.text}
+							fill={focused === true ? Colors.mainBackground : Colors.text}
+						/>
+					),
+				}}
+			/>
+
+			{/* Tab "Profile settings" */}
+			<Tabs.Screen
+				name='profileSettings'
+				options={{
+					tabBarIcon: () => null, // Hide tab icon
+					tabBarButton: () => null, // Hide tab button in the default tab bar
+				}}
+			/>
+
+			{/* Tab "Help center" */}
+			<Tabs.Screen
+				name='helpCenter'
+				options={{
+					tabBarIcon: () => null, // Hide tab icon
+					tabBarButton: () => null, // Hide tab button in the default tab bar
 				}}
 			/>
 		</Tabs>

@@ -10,6 +10,7 @@ import {
 import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -22,6 +23,8 @@ interface ProfileContextMenuProps {
 }
 
 export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible, onClose }) => {
+	const router = useRouter();
+
 	// Get safe area insets to avoid notches/status bar
 	const insets = useSafeAreaInsets();
 
@@ -95,8 +98,11 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 
 					{/* Profile settings */}
 					<TouchableOpacity
-						style={styles.item}
-						onPress={() => handleMenuItemPress(() => console.log('Profile settings'))}
+						style={[styles.item]}
+						onPress={() => {
+							onClose();
+							router.navigate('/profileSettings');
+						}}
 					>
 						{/* Profile settings icon */}
 						<IconProfileSettings stroke={Colors.text} fill={Colors.text} size={24} />
@@ -125,8 +131,11 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 
 					{/* Help center */}
 					<TouchableOpacity
-						style={styles.item}
-						onPress={() => handleMenuItemPress(() => console.log('Help center'))}
+						style={[styles.item]}
+						onPress={() => {
+							onClose();
+							router.navigate('/helpCenter');
+						}}
 					>
 						{/* Help center icon */}
 						<IconHelp stroke={Colors.text} fill={Colors.text} size={24} />

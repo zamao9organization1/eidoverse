@@ -2,11 +2,35 @@ import { IconPensil } from '@/components/ui/Icons';
 import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useProfileUser } from '@/hooks/useProfileUser';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function ProfileSettings() {
-	const userName = 'Jimmi Winchester';
-	const userEmail = 'blablabla@gmail.com';
+	const { user, loading, error } = useProfileUser();
+
+	if (loading) {
+		return (
+			<View style={[stylesGLobal.container, styles.center]}>
+				<ActivityIndicator size='large' color={Colors.textDisabled} />
+			</View>
+		);
+	}
+
+	if (error) {
+		return (
+			<View style={[stylesGLobal.container, styles.center]}>
+				<Text style={typographyGlobal.textBase}>Error: {error}</Text>
+			</View>
+		);
+	}
+
+	if (!user) {
+		return (
+			<View style={[stylesGLobal.container, styles.center]}>
+				<Text style={typographyGlobal.textBase}>User not found</Text>
+			</View>
+		);
+	}
 
 	return (
 		<View style={[stylesGLobal.container]}>
@@ -19,8 +43,8 @@ export default function ProfileSettings() {
 
 				{/* User date */}
 				<View style={[styles.userData]}>
-					<Text style={[typographyGlobal.titleH3Tight]}>{userName}</Text>
-					<Text style={[typographyGlobal.textSmTight]}>{userEmail}</Text>
+					<Text style={[typographyGlobal.titleH3Tight]}>{user?.name}</Text>
+					<Text style={[typographyGlobal.textSmTight]}>{user?.email}</Text>
 				</View>
 
 				{/* User edit */}
@@ -34,7 +58,7 @@ export default function ProfileSettings() {
 				{/* Registration data */}
 				<View style={[styles.settingsItem]}>
 					<Text style={[typographyGlobal.titleH3Tight]}>Registration date:</Text>
-					<Text style={[typographyGlobal.textBase]}>2025-01-18</Text>
+					<Text style={[typographyGlobal.textBase]}>{user?.registrationDate}</Text>
 				</View>
 			</View>
 		</View>
@@ -42,6 +66,10 @@ export default function ProfileSettings() {
 }
 
 export const styles = StyleSheet.create({
+	center: {
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 	userWrapper: {
 		flexDirection: 'row',
 		alignItems: 'center',

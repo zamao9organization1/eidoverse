@@ -7,7 +7,6 @@ export const stylesGLobal = StyleSheet.create({
 		flex: 1,
 		paddingTop: 112,
 		paddingRight: 30,
-		paddingBottom: 32,
 		paddingLeft: 15,
 		backgroundColor: Colors.mainBackground,
 	},
@@ -106,5 +105,29 @@ export const stylesGLobal = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: Colors.inputBackground,
 		borderRadius: 10,
+	},
+
+	// Switcher
+	track: {
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		width: 44,
+		height: 24,
+		borderRadius: 15,
+		padding: 2,
+		marginLeft: 'auto',
+	},
+	trackOn: {
+		backgroundColor: Colors.blue,
+		justifyContent: 'flex-end',
+	},
+	trackOff: {
+		backgroundColor: Colors.itemBackground,
+	},
+	thumb: {
+		width: 20,
+		height: 20,
+		borderRadius: 50,
+		backgroundColor: Colors.title,
 	},
 });

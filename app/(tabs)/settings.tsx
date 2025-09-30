@@ -1,63 +1,28 @@
 import CustomPicker from '@/components/ui/CustomPicker';
-import { IconLink } from '@/components/ui/Icons';
+import CustomSwitch from '@/components/ui/CustomSwitch';
+import ReferralSection from '@/components/ui/RefferalSection';
 import { Colors } from '@/constants/colors';
+import {
+	appUsageOptions,
+	dataExportOptions,
+	deleteCloneOptions,
+	microphoneActivityLvlOptions,
+} from '@/constants/options';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-
-const dataExportOptions = [
-	{
-		label: 'json',
-		value: 'json',
-	},
-	{
-		label: 'csv',
-		value: 'csv',
-	},
-];
-
-const deleteCloneOption = [
-	{
-		label: 'with warning',
-		value: 'with warning',
-	},
-	{
-		label: 'confirmation',
-		value: 'confirmation',
-	},
-];
-
-const microphoneActivityLvlOptions = [
-	{
-		label: 'not recording',
-		value: 'not recording',
-	},
-	{
-		label: 'just measuring',
-		value: 'just measuring',
-	},
-];
-
-const appUsageOptions = [
-	{
-		label: 'screen time',
-		value: 'screen time',
-	},
-	{
-		label: 'foreground activity',
-		value: 'foreground activity',
-	},
-];
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function Settings() {
-	// Local state: manages dark theme toggle
-	const [checked, setChecked] = useState<boolean>(true);
+	// Pickers
+	const [dataAndPrivacy, setDataAndPrivacy] = useState<string>(''); // Data picker
+	const [deleteClone, setDeleteClone] = useState<string>(''); // Delete my clone picker
+	const [micActLvl, setMicActLvl] = useState<string>(''); // Microphone activity level
+	const [appUsage, setAppUsage] = useState<string>(''); // App usage
 
-	const [dataAndPrivacy, setDataAndPrivacy] = useState(''); // Data picker
-	const [deleteClone, setDeleteClone] = useState(''); // Delete my clone picker
-	const [micActLvl, setMicActLvl] = useState(''); // Microphone activity level
-	const [appUsage, setAppUsage] = useState(''); // App usage
+	// Switchers
+	const [anonymizedData, setAnonymizedData] = useState<boolean>(false);
+	const [locationTracker, setLocationTracker] = useState<boolean>(false);
 
 	return (
 		<View style={[stylesGLobal.container, { paddingBottom: 0 }]}>
@@ -90,7 +55,7 @@ export default function Settings() {
 
 							{/* Settings picker */}
 							<CustomPicker
-								options={deleteCloneOption}
+								options={deleteCloneOptions}
 								value={deleteClone}
 								onChange={setDeleteClone}
 								placeholder='with warning'
@@ -103,19 +68,7 @@ export default function Settings() {
 							<Text style={[typographyGlobal.textBase]}>Anonymized data usage</Text>
 
 							{/* Switcher */}
-							<Pressable
-								style={[
-									stylesGLobal.track,
-									checked ? stylesGLobal.trackOn : stylesGLobal.trackOff,
-									{ flexShrink: 0 },
-								]}
-								onPress={() => setChecked(!checked)} // переключатель не закрывает меню
-								accessibilityRole='switch'
-								accessibilityState={{ checked }}
-								accessibilityLabel='Переключить темную тему'
-							>
-								<View style={stylesGLobal.thumb} />
-							</Pressable>
+							<CustomSwitch value={anonymizedData} onValueChange={setAnonymizedData} />
 						</View>
 					</View>
 
@@ -132,19 +85,7 @@ export default function Settings() {
 							<Text style={[typographyGlobal.textBase]}>Location tracking </Text>
 
 							{/* Switcher */}
-							<Pressable
-								style={[
-									stylesGLobal.track,
-									checked ? stylesGLobal.trackOn : stylesGLobal.trackOff,
-									{ flexShrink: 0 },
-								]}
-								onPress={() => setChecked(!checked)} // переключатель не закрывает меню
-								accessibilityRole='switch'
-								accessibilityState={{ checked }}
-								accessibilityLabel='Переключить темную тему'
-							>
-								<View style={stylesGLobal.thumb} />
-							</Pressable>
+							<CustomSwitch value={locationTracker} onValueChange={setLocationTracker} />
 						</View>
 
 						{/* Settings item */}
@@ -183,19 +124,7 @@ export default function Settings() {
 					<Text style={[typographyGlobal.titleH3]}>Refferal link</Text>
 
 					{/* Refferal link */}
-					<View style={[styles.refferalLink]}>
-						<Text style={[typographyGlobal.textBase, { flexGrow: 1 }]}>GUBW94UL</Text>
-
-						<View
-							style={{
-								justifyContent: 'center',
-								alignItems: 'center',
-								marginLeft: 'auto',
-							}}
-						>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
-						</View>
-					</View>
+					<ReferralSection referralCode='GUBW94UL' baseUrl='https://eidoverse.app' />
 				</View>
 			</ScrollView>
 		</View>
@@ -220,18 +149,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		gap: 20,
 		flexShrink: 0,
-	},
-	refferalLink: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		gap: 8,
-		height: 40,
-		paddingRight: 8,
-		paddingLeft: 10,
-		borderRadius: 6,
-		borderWidth: 1,
-		borderColor: Colors.itemBackground,
-		backgroundColor: Colors.inputBackground,
 	},
 	mt48: {
 		marginTop: 48,

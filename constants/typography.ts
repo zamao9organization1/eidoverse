@@ -36,12 +36,11 @@ export const typographyGlobal = StyleSheet.create({
 	titleH2: {
 		fontSize: 20,
 		fontWeight: 600,
-		lineHeight: 25 * 1.4,
+		lineHeight: 20 * 1.4,
 		color: Colors.title,
 		flexShrink: 1,
 	},
 	titleH3: {
-		minHeight: 44,
 		fontSize: 18,
 		fontWeight: 600,
 		lineHeight: 18 * 1.4,

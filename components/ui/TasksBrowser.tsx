@@ -44,7 +44,7 @@ export default function TasksList({ tabFilter }: TasksListProps) {
 	}
 
 	return (
-		<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+		<ScrollView contentContainerStyle={[styles.scrollView]}>
 			<View style={[styles.container]}>
 				{/* Tasks List */}
 				<View style={[styles.tasksList]}>
@@ -132,6 +132,11 @@ export default function TasksList({ tabFilter }: TasksListProps) {
 }
 
 export const styles = StyleSheet.create({
+	scrollView: {
+		flexGrow: 1,
+		paddingBottom: 60,
+		backgroundColor: Colors.mainBackground,
+	},
 	container: {
 		flex: 1,
 		backgroundColor: Colors.mainBackground,

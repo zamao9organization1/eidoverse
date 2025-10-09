@@ -4,7 +4,7 @@ import { MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function TabsOnPage(props: MaterialTopTabBarProps) {
-	const { state, navigation } = props;
+	const { state, navigation, descriptors } = props;
 
 	const onPress = (index: number) => {
 		navigation.navigate(state.routes[index].name);
@@ -17,7 +17,8 @@ export default function TabsOnPage(props: MaterialTopTabBarProps) {
 			<View style={[stylesGLobal.tabs]}>
 				{state.routes.map((route, index) => {
 					const isActive = state.index === index;
-					const label = route.name === 'All' ? 'All' : 'Done';
+					const { options } = descriptors[route.key];
+					const label = typeof options.tabBarLabel === 'string' ? options.tabBarLabel : route.name;
 
 					return (
 						// Tab

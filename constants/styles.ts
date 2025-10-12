@@ -6,8 +6,6 @@ export const stylesGLobal = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 112,
-		paddingRight: 30,
-		paddingLeft: 15,
 		backgroundColor: Colors.mainBackground,
 	},
 	dividingLine: {
@@ -15,6 +13,18 @@ export const stylesGLobal = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderBlockColor: Colors.itemBackground,
 		borderStyle: 'solid',
+	},
+	recommendationBadge: {
+		paddingVertical: 6,
+		paddingHorizontal: 10,
+		borderRadius: 6,
+		backgroundColor: Colors.recommendationBadge,
+	},
+	statusBadge: {
+		paddingVertical: 6,
+		paddingHorizontal: 10,
+		borderRadius: 6,
+		backgroundColor: Colors.statusBadge,
 	},
 
 	// Border radius
@@ -31,7 +41,7 @@ export const stylesGLobal = StyleSheet.create({
 	// Tabs
 	tabsWrapper: {
 		padding: 6,
-		marginBottom: 10,
+		marginBottom: 4,
 		backgroundColor: Colors.itemBackground,
 		borderRadius: 15,
 	},
@@ -59,7 +69,6 @@ export const stylesGLobal = StyleSheet.create({
 	tabsItemActiveText: {
 		color: Colors.mainBackground,
 	},
-
 	bgTransparent: {
 		backgroundColor: 'transparent',
 	},
@@ -129,5 +138,30 @@ export const stylesGLobal = StyleSheet.create({
 		height: 20,
 		borderRadius: 50,
 		backgroundColor: Colors.title,
+	},
+
+	// Settings
+	settingsContainer: {
+		gap: 20,
+		marginTop: 16,
+		marginBottom: 60,
+		paddingVertical: 20,
+		paddingHorizontal: 14,
+		borderRadius: 15,
+		backgroundColor: Colors.itemBackground,
+	},
+	settingsContainerHeader: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 10,
+	},
+	settingsItem: {
+		flexDirection: 'row',
+		alignItems: 'flex-start',
+		gap: 14,
+	},
+	settingsItemContent: {
+		flexShrink: 1,
+		gap: 4,
 	},
 });

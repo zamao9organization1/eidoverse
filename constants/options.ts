@@ -1,43 +1,33 @@
-export const dataExportOptions = [
+export const tasksRemindersOptions = [
 	{
-		label: 'json',
-		value: 'json',
+		label: 'daily',
+		value: 'daily',
 	},
 	{
-		label: 'csv',
-		value: 'csv',
-	},
-];
-
-export const deleteCloneOptions = [
-	{
-		label: 'with warning',
-		value: 'with warning',
+		label: 'weekly',
+		value: 'weekly',
 	},
 	{
-		label: 'confirmation',
-		value: 'confirmation',
+		label: 'off',
+		value: 'off',
 	},
 ];
 
-export const microphoneActivityLvlOptions = [
+export const sessionTimeoutOptions = [
 	{
-		label: 'not recording',
-		value: 'not recording',
+		label: '15 min',
+		value: '15 min',
 	},
 	{
-		label: 'just measuring',
-		value: 'just measuring',
-	},
-];
-
-export const appUsageOptions = [
-	{
-		label: 'screen time',
-		value: 'screen time',
+		label: '1 hour',
+		value: '1 hour',
 	},
 	{
-		label: 'foreground activity',
-		value: 'foreground activity',
+		label: '4 hours',
+		value: '4 hours',
+	},
+	{
+		label: 'never',
+		value: 'never',
 	},
 ];

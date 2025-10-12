@@ -10,4 +10,6 @@ export const Colors = {
 	green: '#32A856',
 	red: '#B24749',
 	blue: '#5677BF',
+	recommendationBadge: 'rgba(178, 71, 73, 0.15)',
+	statusBadge: 'rgba(59, 168, 86, 0.15)',
 };

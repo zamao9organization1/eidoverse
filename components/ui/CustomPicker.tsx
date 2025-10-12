@@ -70,6 +70,7 @@ export default function CustomPicker({
 
 const styles = StyleSheet.create({
 	container: {
+		flexShrink: 0,
 		marginLeft: 'auto',
 	},
 	picker: {

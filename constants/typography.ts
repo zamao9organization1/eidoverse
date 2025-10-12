@@ -17,6 +17,13 @@ export const typographyGlobal = StyleSheet.create({
 		color: Colors.text,
 		flexShrink: 1,
 	},
+	textSm: {
+		fontSize: 12,
+		fontWeight: 400,
+		lineHeight: 12 * 1.4,
+		color: Colors.textDisabled,
+		flexShrink: 1,
+	},
 	textSmTight: {
 		fontSize: 12,
 		fontWeight: 400,
@@ -51,6 +58,13 @@ export const typographyGlobal = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: 600,
 		lineHeight: 18,
+		color: Colors.title,
+		flexShrink: 1,
+	},
+	titleH4Tight: {
+		fontSize: 16,
+		fontWeight: 600,
+		lineHeight: 16,
 		color: Colors.title,
 		flexShrink: 1,
 	},

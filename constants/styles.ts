@@ -5,7 +5,6 @@ const { width, height } = Dimensions.get('window');
 export const stylesGLobal = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingTop: 112,
 		backgroundColor: Colors.mainBackground,
 	},
 	dividingLine: {
@@ -36,6 +35,24 @@ export const stylesGLobal = StyleSheet.create({
 	},
 	roundedSm: {
 		borderRadius: 6,
+	},
+
+	// Button
+	button: {
+		flexShrink: 0,
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: 34,
+		minWidth: 90,
+		paddingHorizontal: 12,
+		borderRadius: 6,
+		borderWidth: 1,
+		borderColor: Colors.itemBackground,
+		backgroundColor: Colors.itemBackground,
+	},
+	buttonRed: {
+		borderColor: Colors.red,
+		backgroundColor: 'transparent',
 	},
 
 	// Tabs

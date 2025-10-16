@@ -4,6 +4,7 @@ const { width, height } = Dimensions.get('window');
 
 export const stylesGLobal = StyleSheet.create({
 	container: {
+		position: 'relative',
 		flex: 1,
 		backgroundColor: Colors.mainBackground,
 	},
@@ -98,6 +99,7 @@ export const stylesGLobal = StyleSheet.create({
 		gap: 10,
 		marginRight: 'auto',
 		marginLeft: 'auto',
+		marginBottom: 60,
 		backgroundColor: Colors.itemBackground,
 		borderRadius: 15,
 		padding: 6,

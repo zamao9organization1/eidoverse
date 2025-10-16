@@ -4,7 +4,6 @@ import {
 	IconLogOut,
 	IconLvl,
 	IconProfile,
-	IconProfileSettings,
 	IconTheme,
 } from '@/components/ui/Icons';
 import { Colors } from '@/constants/colors';
@@ -44,10 +43,10 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 	const cloneLvl = 25;
 
 	return (
-		<GestureHandlerRootView style={StyleSheet.absoluteFill} pointerEvents='box-none'>
+		<GestureHandlerRootView style={StyleSheet.absoluteFill}>
 			{/* Overlay background: captures taps outside the menu to close it */}
 			<Pressable
-				style={StyleSheet.absoluteFill} // fills entire screen
+				style={[StyleSheet.absoluteFill]} // fills entire screen
 				onPress={onClose} // triggers menu close on outside tap
 			/>
 
@@ -59,7 +58,13 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 			>
 				<View style={styles.popup}>
 					{/* User */}
-					<View style={styles.userWrapper}>
+					<TouchableOpacity
+						style={styles.userWrapper}
+						onPress={() => {
+							onClose();
+							router.navigate('/profile');
+						}}
+					>
 						{/* Profile icon */}
 						<IconProfile stroke={Colors.text} fill={Colors.text} size={40} />
 
@@ -68,7 +73,7 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 							<Text style={typographyGlobal.titleH3Tight}>Jimmi Winchester</Text>
 							<Text style={[typographyGlobal.titleCaption, styles.mail]}>blabla@gmail.com</Text>
 						</View>
-					</View>
+					</TouchableOpacity>
 
 					{/* Balance */}
 					<View style={styles.item}>
@@ -95,20 +100,6 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 							<Text style={[typographyGlobal.titleH3Tight, styles.lvl]}>{cloneLvl}</Text>
 						</View>
 					</View>
-
-					{/* Profile settings */}
-					<TouchableOpacity
-						style={[styles.item]}
-						onPress={() => {
-							onClose();
-							router.navigate('/profileSettings');
-						}}
-					>
-						{/* Profile settings icon */}
-						<IconProfileSettings stroke={Colors.text} fill={Colors.text} size={24} />
-
-						<Text style={typographyGlobal.titleH3Tight}>Profile settings</Text>
-					</TouchableOpacity>
 
 					{/* Theme */}
 					<View style={styles.item}>

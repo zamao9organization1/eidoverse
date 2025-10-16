@@ -51,7 +51,7 @@ export const useTasks = (filterDone: boolean | null = null) => {
 				setTasks(data);
 			} catch (error) {
 				// Log error if something goes wrong
-				console.error('Ошибка при загрузке задач:', error);
+				console.error('Error loading tasks:', error);
 			} finally {
 				// Always turn off loading state, even if error occurred
 				setLoading(false);

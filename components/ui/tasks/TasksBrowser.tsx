@@ -4,14 +4,14 @@ import { typographyGlobal } from '@/constants/typography';
 import { usePagination } from '@/hooks/usePagination';
 import { useTasks } from '@/hooks/useTasks';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { IconSuccess } from './Icons';
-import Pagination from './Pagination';
+import { IconSuccess } from '../Icons';
+import Pagination from '../Pagination';
 
 interface TasksListProps {
 	tabFilter: boolean | null; // null = all, true = done only
 }
 
-export default function TasksList({ tabFilter }: TasksListProps) {
+export default function TasksBrowser({ tabFilter }: TasksListProps) {
 	// Fetch all tasks (no filter) from API
 	const { tasks, loading } = useTasks(tabFilter);
 	// Initialize pagination: split `tasks` into pages of 6 items each
@@ -47,7 +47,7 @@ export default function TasksList({ tabFilter }: TasksListProps) {
 		<ScrollView contentContainerStyle={[styles.scrollView]}>
 			<View style={[styles.container]}>
 				{/* Tasks List */}
-				<View style={[styles.tasksList]}>
+				<View style={[styles.tasksList, totalPages > 1 && { marginBottom: 0 }]}>
 					{currentItems.map((element) => (
 						// Tasks Item Wrapper
 						<View style={[styles.tasksItemWrapper]} key={element.id}>
@@ -134,16 +134,18 @@ export default function TasksList({ tabFilter }: TasksListProps) {
 export const styles = StyleSheet.create({
 	scrollView: {
 		flexGrow: 1,
-		paddingBottom: 60,
 		backgroundColor: Colors.mainBackground,
 	},
 	container: {
 		flex: 1,
 		backgroundColor: Colors.mainBackground,
-		paddingTop: 32,
+		paddingTop: 20,
+		paddingLeft: 15,
+		paddingRight: 30,
 	},
 	tasksList: {
 		gap: 10,
+		marginBottom: 60,
 	},
 	tasksItemWrapper: {
 		padding: 6,

@@ -66,9 +66,9 @@ export default function TabsLayout() {
 				}}
 			/>
 
-			{/* Tab "Profile settings" */}
+			{/* Tab "Profile" */}
 			<Tabs.Screen
-				name='profileSettings'
+				name='profile'
 				options={{
 					tabBarIcon: () => null, // Hide tab icon
 					tabBarButton: () => null, // Hide tab button in the default tab bar

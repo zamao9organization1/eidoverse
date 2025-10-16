@@ -1,17 +1,25 @@
-import { IconProfile } from '@/components/ui/Icons';
 import { ProfileContextMenu } from '@/components/ui/ProfileContextMenu';
-import { Colors } from '@/constants/colors';
-import { useProfileContextMenu } from '@/hooks/useProfileContextMenu';
+import { ProfileContextMenuProvider, useProfileContextMenu } from '@/hooks/useProfileContextMenu';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync(); // Preventing automatic hiding of the splash screen
 
+// ✅ Внешний компонент: только провайдер
 export default function RootLayout() {
+	return (
+		<ProfileContextMenuProvider>
+			<RootLayoutContent />
+		</ProfileContextMenuProvider>
+	);
+}
+
+function RootLayoutContent() {
 	// Fonts
 	const [loaded] = useFonts({
 		'Nunito-Regular': require('../assets/fonts/Nunito-Regular.ttf'),
@@ -21,9 +29,10 @@ export default function RootLayout() {
 
 	// Get safe area insets to avoid notches/status bar
 	const insets = useSafeAreaInsets();
+	const { visible, hideMenu } = useProfileContextMenu();
 
 	useEffect(() => {
-		hideMenu(); // Close ProfileContextMenu after click on other page
+		hideMenu();
 	}, []);
 
 	useEffect(() => {
@@ -32,18 +41,12 @@ export default function RootLayout() {
 		}
 	}, [loaded]);
 
-	const { visible, toggleMenu, hideMenu } = useProfileContextMenu();
-
-	const handleMenuButtonPress = () => {
-		toggleMenu();
-	};
-
 	if (!loaded) {
 		return null; // Show custom loader while loading fonts
 	}
 
 	return (
-		<>
+		<GestureHandlerRootView style={{ flex: 1 }}>
 			<StatusBar barStyle='light-content' backgroundColor='#020303' />
 			<SafeAreaView style={{ flex: 1, paddingTop: insets.top, backgroundColor: '#020303' }}>
 				<Stack
@@ -52,46 +55,9 @@ export default function RootLayout() {
 						headerShown: false,
 					}}
 				/>
-
-				{/* Profile button wrapper */}
-				<View style={[styles.buttonWrapper, { top: insets.top + 30 }]}>
-					{/* Profile button */}
-					<TouchableOpacity
-						onPress={handleMenuButtonPress}
-						style={[styles.button, visible && styles.buttonIsActive]}
-					>
-						<IconProfile
-							stroke={visible ? Colors.mainBackground : Colors.text}
-							fill={visible ? Colors.mainBackground : Colors.text}
-							size={24}
-						/>
-					</TouchableOpacity>
-				</View>
-
-				{/* Profile context menu */}
-				<ProfileContextMenu visible={visible} onClose={hideMenu} />
 			</SafeAreaView>
-		</>
+
+			{visible && <ProfileContextMenu visible={visible} onClose={hideMenu} />}
+		</GestureHandlerRootView>
 	);
 }
-
-export const styles = StyleSheet.create({
-	buttonWrapper: {
-		position: 'absolute',
-		zIndex: 900,
-		right: 30,
-		padding: 6,
-		borderRadius: 15,
-		backgroundColor: Colors.itemBackground,
-	},
-	button: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: 40,
-		height: 40,
-		borderRadius: 10,
-	},
-	buttonIsActive: {
-		backgroundColor: Colors.title,
-	},
-});

@@ -1,5 +1,6 @@
 // components/ui/VerticalTabBar.tsx
 import { Colors } from '@/constants/colors';
+import { useProfileContextMenu } from '@/hooks/useProfileContextMenu';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { useState } from 'react';
 import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
@@ -10,12 +11,18 @@ export default function VerticalTabBar({ state, descriptors, navigation }: Botto
 	// List of tab routes that should be visible in the custom tab bar
 	const visibleTabNames = ['index', 'wallet', 'tasks', 'settings'];
 
+	const { hideMenu } = useProfileContextMenu();
+
 	return (
 		<TouchableOpacity
 			style={[containerIsActive === true ? styles.containerIsActive : styles.container]}
-			onPress={() => setContainerIsActive(true)}
+			onPress={() => {
+				setContainerIsActive(true);
+				hideMenu();
+			}}
 		>
-			<View style={[styles.navigation]}>
+			{/* Inner container will shown, when VerticalTabBar is open */}
+			<View style={[containerIsActive === true && styles.navigation]}>
 				{state.routes.map((route, index) => {
 					// Skip rendering hidden tabs (e.g. profileSettings) in the tab bar
 					if (!visibleTabNames.includes(route.name)) return null;
@@ -44,7 +51,10 @@ export default function VerticalTabBar({ state, descriptors, navigation }: Botto
 								} // We proceed only if the tab is not active and the event has not been canceled.
 								setContainerIsActive(false);
 							}}
-							style={[styles.navigationItem, isActive && styles.navigationItemIsActive]} // Tab style
+							style={[
+								containerIsActive === true && styles.navigationItem,
+								isActive && styles.navigationItemIsActive,
+							]} // Tab style when VerticalTabBar is open
 						>
 							{/* We display the icon if it is set */}
 							{Icon && <Icon focused={isActive} color={''} size={24} />}
@@ -86,7 +96,7 @@ const styles = StyleSheet.create({
 		gap: 10,
 		paddingTop: 160,
 		paddingRight: 6,
-		paddingBottom: 160,
+		paddingBottom: 120,
 		paddingLeft: 6,
 	},
 	navigation: {

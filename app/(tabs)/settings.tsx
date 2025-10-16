@@ -1,3 +1,4 @@
+import ProfileButton from '@/components/ui/ProfileButton';
 import SettingsTabs from '@/components/ui/settings/SettingsTabs';
 import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
@@ -8,6 +9,9 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Settings() {
 	return (
 		<View style={[stylesGLobal.container]}>
+			{/* Profile button */}
+			<ProfileButton />
+
 			<Text style={[typographyGlobal.titleH1, styles.title]}>Settings</Text>
 
 			<View style={{ flex: 1 }}>
@@ -37,7 +41,7 @@ export const styles = StyleSheet.create({
 		flexShrink: 0,
 	},
 	title: {
-		marginTop: 48,
+		marginTop: 120,
 		marginBottom: 32,
 		paddingLeft: 15,
 		paddingRight: 30,

@@ -25,13 +25,14 @@ export default function SettingsAdvanced() {
 	return (
 		<ScrollView style={[styles.scrollWprapper]}>
 			<View style={[stylesGLobal.settingsContainer]}>
-				{/* Developer options */}
-				<Text style={[typographyGlobal.titleH2]}>Developer options</Text>
 				{/* Container header */}
 				<View style={[stylesGLobal.settingsContainerHeader]}>
 					<IconAdvanced fill={Colors.text} stroke={Colors.text} size={40} />
 					<Text style={[typographyGlobal.titleH2]}>Advanced </Text>
 				</View>
+
+				{/* Developer options */}
+				<Text style={[typographyGlobal.titleH3]}>Developer options</Text>
 
 				{/* Settings items */}
 
@@ -63,7 +64,7 @@ export default function SettingsAdvanced() {
 				<View style={[stylesGLobal.dividingLine]}></View>
 
 				{/* Beta program */}
-				<Text style={[typographyGlobal.titleH2]}>Beta program</Text>
+				<Text style={[typographyGlobal.titleH3]}>Beta program</Text>
 
 				{/* Join beta testing */}
 				<View style={[stylesGLobal.settingsItem]}>
@@ -81,7 +82,7 @@ export default function SettingsAdvanced() {
 				<View style={[stylesGLobal.dividingLine]}></View>
 
 				{/* Legal & documentation */}
-				<Text style={[typographyGlobal.titleH2]}>Legal & documentation</Text>
+				<Text style={[typographyGlobal.titleH3]}>Legal & documentation</Text>
 
 				{/* Link list */}
 				<View style={[styles.linksList]}>
@@ -148,7 +149,7 @@ export default function SettingsAdvanced() {
 				<View style={[stylesGLobal.dividingLine]}></View>
 
 				{/* Contact & support */}
-				<Text style={[typographyGlobal.titleH2]}>Contact & support</Text>
+				<Text style={[typographyGlobal.titleH3]}>Contact & support</Text>
 
 				{/* Link list */}
 				<View style={[styles.linksList]}>

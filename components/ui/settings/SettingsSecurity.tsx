@@ -85,13 +85,13 @@ export default function SettingsSecurity() {
 				<View style={[stylesGLobal.dividingLine]}></View>
 
 				{/* Device management */}
-				<Text style={[typographyGlobal.titleH2]}>Device management</Text>
+				<Text style={[typographyGlobal.titleH3]}>Device management</Text>
 
 				{/* Device item (current) */}
 				<View style={[styles.currentDeviceItem]}>
 					{/* Item header */}
 					<View style={{ flexDirection: 'row' }}>
-						<Text style={[typographyGlobal.textBase, { color: Colors.green }]}>Android 6g</Text>
+						<Text style={[typographyGlobal.textBase]}>Android 6g</Text>
 						{/* Status badge */}
 						<View style={[stylesGLobal.statusBadge, { marginLeft: 'auto' }]}>
 							<Text style={[typographyGlobal.titleCaption, { color: Colors.green }]}>Current</Text>
@@ -99,12 +99,10 @@ export default function SettingsSecurity() {
 					</View>
 
 					{/* Address */}
-					<Text style={[typographyGlobal.textSm, { color: Colors.green }]}>San Francisco, CA</Text>
+					<Text style={[typographyGlobal.textSm]}>San Francisco, CA</Text>
 
 					{/* Activity */}
-					<Text style={[typographyGlobal.textSm, { color: Colors.green }]}>
-						Last active: {lastActivity}
-					</Text>
+					<Text style={[typographyGlobal.textSm]}>Last active: {lastActivity}</Text>
 				</View>
 
 				{/* Device item */}
@@ -154,7 +152,6 @@ export const styles = StyleSheet.create({
 		paddingVertical: 20,
 		paddingHorizontal: 14,
 		borderRadius: 15,
-		backgroundColor: Colors.statusBadge,
 		borderWidth: 1,
 		borderColor: 'rgba(50, 169, 86, 0.3)',
 	},

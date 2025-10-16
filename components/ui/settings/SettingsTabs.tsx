@@ -1,10 +1,17 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React from 'react';
-import { IconAdvanced, IconDataAndPrivacy, IconNotifications, IconSecurity } from '../Icons';
+import {
+	IconAdvanced,
+	IconDataAndPrivacy,
+	IconNotifications,
+	IconProfile,
+	IconSecurity,
+} from '../Icons';
 import TabsOnPage from '../TabsOnPage';
 import SettingsAdvanced from './SettingsAdvanced';
 import SettingsDataAndPrivacy from './SettingsDataAndPrivacy';
 import SettingsNotifications from './SettingsNotifications';
+import SettingsProfile from './SettingsProfile';
 import SettingsSecurity from './SettingsSecurity';
 
 const Tab = createMaterialTopTabNavigator();
@@ -18,6 +25,11 @@ export default function SettingsTabs() {
 				swipeEnabled: false, // Swipes Off
 			}}
 		>
+			<Tab.Screen
+				name='Profile'
+				component={SettingsProfile}
+				options={{ tabBarLabel: 'Profile', tabBarIcon: IconProfile }}
+			/>
 			<Tab.Screen
 				name='Notifications'
 				component={SettingsNotifications}

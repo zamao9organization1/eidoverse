@@ -8,8 +8,8 @@ import {
 	IconAdvanced,
 	IconChat,
 	IconDataAndPrivacy,
+	IconGoLink,
 	IconHelp,
-	IconLink,
 	IconList,
 	IconNetwork,
 	IconReport,
@@ -98,7 +98,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 
@@ -112,7 +112,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 
@@ -126,7 +126,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 
@@ -140,7 +140,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 				</View>
@@ -165,7 +165,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 
@@ -179,7 +179,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 
@@ -193,7 +193,7 @@ export default function SettingsAdvanced() {
 
 						{/* Link button */}
 						<TouchableOpacity style={[styles.linkButton]}>
-							<IconLink fill={Colors.text} stroke={Colors.text} size={24} />
+							<IconGoLink fill={Colors.text} stroke={Colors.text} size={24} />
 						</TouchableOpacity>
 					</View>
 				</View>

@@ -66,18 +66,9 @@ export default function TabsLayout() {
 				}}
 			/>
 
-			{/* Tab "Profile" */}
+			{/* "Profile" */}
 			<Tabs.Screen
 				name='profile'
-				options={{
-					tabBarIcon: () => null, // Hide tab icon
-					tabBarButton: () => null, // Hide tab button in the default tab bar
-				}}
-			/>
-
-			{/* Tab "Help center" */}
-			<Tabs.Screen
-				name='helpCenter'
 				options={{
 					tabBarIcon: () => null, // Hide tab icon
 					tabBarButton: () => null, // Hide tab button in the default tab bar

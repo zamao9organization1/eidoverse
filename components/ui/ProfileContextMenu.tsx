@@ -125,7 +125,7 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 						style={[styles.item]}
 						onPress={() => {
 							onClose();
-							router.navigate('/helpCenter');
+							// router.navigate('/helpCenter');
 						}}
 					>
 						{/* Help center icon */}

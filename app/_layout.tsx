@@ -1,4 +1,5 @@
 import { ProfileContextMenu } from '@/components/ui/ProfileContextMenu';
+import { AuthProvider } from '@/context/AuthContext';
 import { ProfileContextMenuProvider, useProfileContextMenu } from '@/hooks/useProfileContextMenu';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -10,12 +11,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync(); // Preventing automatic hiding of the splash screen
 
-// ✅ Внешний компонент: только провайдер
+// External component: provider only
 export default function RootLayout() {
 	return (
-		<ProfileContextMenuProvider>
-			<RootLayoutContent />
-		</ProfileContextMenuProvider>
+		<AuthProvider>
+			<ProfileContextMenuProvider>
+				<RootLayoutContent />
+			</ProfileContextMenuProvider>
+		</AuthProvider>
 	);
 }
 

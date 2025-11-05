@@ -1,3 +1,10 @@
+import { EventsStatus } from '@/hooks/useEvents';
+
+type EventsFilterOption = {
+	label: string;
+	value: 'all' | EventsStatus;
+};
+
 export const tasksRemindersOptions = [
 	{
 		label: 'daily',
@@ -29,5 +36,24 @@ export const sessionTimeoutOptions = [
 	{
 		label: 'never',
 		value: 'never',
+	},
+];
+
+export const eventsFilterOptions: EventsFilterOption[] = [
+	{
+		label: 'All',
+		value: 'all',
+	},
+	{
+		label: 'Active',
+		value: 'active',
+	},
+	{
+		label: 'Joined',
+		value: 'joined',
+	},
+	{
+		label: 'Upcoming',
+		value: 'upcoming',
 	},
 ];

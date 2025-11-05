@@ -1,5 +1,5 @@
 // app/(tabs)/_layout.tsx
-import { IconHome, IconSettings, IconTasks, IconWallet } from '@/components/ui/Icons';
+import { IconCalendar, IconHome, IconSettings, IconTasks, IconWallet } from '@/components/ui/Icons';
 import VerticalTabBar from '@/components/ui/VerticalTabBar';
 import { Colors } from '@/constants/colors';
 import { Tabs } from 'expo-router';
@@ -46,6 +46,19 @@ export default function TabsLayout() {
 				options={{
 					tabBarIcon: ({ focused }) => (
 						<IconTasks
+							stroke={focused === true ? Colors.mainBackground : Colors.text}
+							fill={focused === true ? Colors.mainBackground : Colors.text}
+						/>
+					),
+				}}
+			/>
+
+			{/* Tab "Events" */}
+			<Tabs.Screen
+				name='events'
+				options={{
+					tabBarIcon: ({ focused }) => (
+						<IconCalendar
 							stroke={focused === true ? Colors.mainBackground : Colors.text}
 							fill={focused === true ? Colors.mainBackground : Colors.text}
 						/>

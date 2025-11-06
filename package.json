@@ -11,6 +11,7 @@
     "lint": "expo lint",
     "tasks": "json-server --watch tasks.json --port 3001",
     "events": "json-server --watch events.json --port 3001",
+    "leaderboard": "json-server --watch leaderboard.json --port 3001",
     "achievements": "json-server --watch achievements.json --port 3001"
   },
   "dependencies": {

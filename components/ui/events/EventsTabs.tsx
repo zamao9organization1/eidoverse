@@ -1,8 +1,9 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React from 'react';
-import { IconCalendar } from '../Icons';
+import { IconCalendar, IconCompetition } from '../Icons';
 import TabsOnPage from '../TabsOnPage';
 import AllEvents from './AllEvents';
+import Leaderboard from './Leaderboard';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -19,6 +20,11 @@ export default function EventsTabs() {
 				name='AllEvents'
 				component={AllEvents}
 				options={{ tabBarLabel: 'AllEvents', tabBarIcon: IconCalendar }}
+			/>
+			<Tab.Screen
+				name='Leaderboard'
+				component={Leaderboard}
+				options={{ tabBarLabel: 'Leaderboard', tabBarIcon: IconCompetition }}
 			/>
 		</Tab.Navigator>
 	);

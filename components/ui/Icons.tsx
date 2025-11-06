@@ -388,6 +388,18 @@ const IconProfileSettings = ({ stroke = 'none', fill = 'none', size = 24, ...pro
 	</Svg>
 );
 
+const IconRatingDown = ({ stroke = 'none', fill = 'none', size = 24, ...props }: Props) => (
+	<Svg width={size} height={size} viewBox='0 0 25 24' fill='none'>
+		<Path d='M6 6L18 18M18 18V8.4M18 18H8.4' stroke={stroke} strokeLinecap='round' />
+	</Svg>
+);
+
+const IconRatingUp = ({ stroke = 'none', fill = 'none', size = 24, ...props }: Props) => (
+	<Svg width={size} height={size} viewBox='0 0 25 24' fill='none'>
+		<Path d='M8.4 6H18M18 6V15.6M18 6L6 18' stroke={stroke} strokeLinecap='round' />
+	</Svg>
+);
+
 const IconReport = ({ stroke = 'none', fill = 'none', size = 24, ...props }: Props) => (
 	<Svg width={size} height={size} viewBox='0 0 25 24' fill='none'>
 		<Path
@@ -542,6 +554,8 @@ export {
 	IconPrice,
 	IconProfile,
 	IconProfileSettings,
+	IconRatingDown,
+	IconRatingUp,
 	IconReport,
 	IconSecurity,
 	IconSettings,

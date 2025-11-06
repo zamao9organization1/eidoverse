@@ -9,7 +9,7 @@ export default function VerticalTabBar({ state, descriptors, navigation }: Botto
 	// Tabs container state
 	const [containerIsActive, setContainerIsActive] = useState<boolean>(false);
 	// List of tab routes that should be visible in the custom tab bar
-	const visibleTabNames = ['index', 'wallet', 'tasks', 'settings'];
+	const visibleTabNames = ['index', 'wallet', 'tasks', 'events', 'settings'];
 
 	const { hideMenu } = useProfileContextMenu();
 

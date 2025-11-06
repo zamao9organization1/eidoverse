@@ -1,0 +1,52 @@
+{
+	"events": [
+		{
+			"id": 1,
+			"title": "Eido olympics 2024",
+			"description": "Compete in various AI challenges and showcase your Eido's abilities.",
+			"status": "active",
+			"difficulty": "hard",
+			"addedDate": "2025-10-21",
+			"participants": "1356",
+			"daysUntilStart": "9",
+			"daysRemaining": "0",
+			"price": "5000"
+		},
+		{
+			"id": 2,
+			"title": "Perfect alignment challenge",
+			"description": "Achieve and maintain 95%+ alignment score for 30 days.",
+			"status": "joined",
+			"difficulty": "medium",
+			"addedDate": "2025-10-13",
+			"participants": "892",
+			"daysUntilStart": "25",
+			"daysRemaining": "0",
+			"price": "2500"
+		},
+		{
+			"id": 3,
+			"title": "Comunity Eido training",
+			"description": "Collaborate with others to train AI models and improve the ecosystem.",
+			"status": "joined",
+			"difficulty": "easy",
+			"addedDate": "2025-10-16",
+			"participants": "2341",
+			"daysUntilStart": "12",
+			"daysRemaining": "0",
+			"price": "1000"
+		},
+		{
+			"id": 4,
+			"title": "Personality fusion experiment",
+			"description": "Test new personality blending techniques (Beta).",
+			"status": "upcoming",
+			"difficulty": "medium",
+			"addedDate": "2025-10-25",
+			"participants": "0",
+			"daysUntilStart": "0",
+			"daysRemaining": "0",
+			"price": "5000"
+		}
+	]
+}

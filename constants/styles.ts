@@ -27,6 +27,17 @@ export const stylesGLobal = StyleSheet.create({
 		backgroundColor: Colors.statusBadge,
 	},
 
+	badges: {
+		paddingVertical: 6,
+		paddingHorizontal: 10,
+		borderRadius: 6,
+	},
+	price: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 4,
+	},
+
 	// Border radius
 	rounded: {
 		borderRadius: 15,
@@ -54,6 +65,10 @@ export const stylesGLobal = StyleSheet.create({
 	buttonRed: {
 		borderColor: Colors.red,
 		backgroundColor: 'transparent',
+	},
+	eventsButtonStart: {
+		backgroundColor: Colors.greenBadge,
+		borderColor: 'rgba(46, 153, 78, 0.3)',
 	},
 
 	// Tabs

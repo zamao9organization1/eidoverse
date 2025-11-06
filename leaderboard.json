@@ -1,0 +1,95 @@
+{
+	"leaderboard": [
+		{
+			"id": 1,
+			"rank": 1,
+			"userName": "Quantum Mind",
+			"rating": "9847",
+			"ratingChange": 2
+		},
+		{
+			"id": 2,
+			"rank": 2,
+			"userName": "Neural Ninja",
+			"rating": "9651",
+			"ratingChange": 0
+		},
+		{
+			"id": 3,
+			"rank": 3,
+			"userName": "Synaptic Sage",
+			"rating": "9423",
+			"ratingChange": -2
+		},
+		{
+			"id": 4,
+			"rank": 4,
+			"userName": "Cognitive King",
+			"rating": "9201",
+			"ratingChange": 1
+		},
+		{
+			"id": 5,
+			"rank": 5,
+			"userName": "Digital Dreamer",
+			"rating": "8987",
+			"ratingChange": 3
+		},
+		{
+			"id": 6,
+			"rank": 6,
+			"userName": "Mr. Binks",
+			"rating": "8600",
+			"ratingChange": 0
+		},
+		{
+			"id": 7,
+			"rank": 7,
+			"userName": "Lusy Lyu",
+			"rating": "8300",
+			"ratingChange": 1
+		},
+		{
+			"id": 8,
+			"rank": 8,
+			"userName": "Somebody Somewho",
+			"rating": "8200",
+			"ratingChange": -1
+		},
+		{
+			"id": 9,
+			"rank": 9,
+			"userName": "Goku",
+			"rating": "8150",
+			"ratingChange": 0
+		},
+		{
+			"id": 10,
+			"rank": 10,
+			"userName": "Pikachu",
+			"rating": "8000",
+			"ratingChange": 2
+		},
+		{
+			"id": 11,
+			"rank": 11,
+			"userName": "Dr. Who",
+			"rating": "7900",
+			"ratingChange": -1
+		},
+		{
+			"id": 12,
+			"rank": 12,
+			"userName": "Wtf",
+			"rating": "7800",
+			"ratingChange": -2
+		},
+		{
+			"id": 123,
+			"rank": 123,
+			"userName": "Jimmi Winchester",
+			"rating": "5000",
+			"ratingChange": 1
+		}
+	]
+}

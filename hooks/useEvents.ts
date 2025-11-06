@@ -1,4 +1,3 @@
-// hooks/useEvents.ts
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
@@ -15,10 +14,10 @@ export interface EventsInterface {
 	status: EventsStatus;
 	difficulty: EventsDifficulty;
 	addedDate: string;
-	participants: string;
+	participants: number;
 	daysUntilStart: string;
 	daysRemaining: string;
-	price: string;
+	price: number;
 }
 
 export function useEvents() {
@@ -42,14 +41,39 @@ export function useEvents() {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
 
-				const data: EventsInterface[] = await response.json();
-				setEvents(data);
+				const rawData: any[] = await response.json();
+
+				const cleanedData = rawData.map((event) => {
+					let cleanParticipants = 0;
+					if (typeof event.participants === 'string') {
+						cleanParticipants = Number(event.participants.replace(/\s/g, ''));
+					} else if (typeof event.participants === 'number') {
+						cleanParticipants = event.participants;
+					}
+
+					let cleanPrice = 0;
+					if (typeof event.price === 'string') {
+						cleanPrice = Number(event.price.replace(/\s/g, ''));
+					} else if (typeof event.price === 'number') {
+						cleanPrice = event.price;
+					}
+
+					const cleanAddedDate = typeof event.addedDate === 'string' ? event.addedDate : '—';
+
+					return {
+						...event,
+						addedDate: cleanAddedDate,
+						participants: isNaN(cleanParticipants) ? 0 : cleanParticipants,
+						price: isNaN(cleanPrice) ? 0 : cleanPrice,
+					};
+				});
+
+				setEvents(cleanedData as EventsInterface[]);
 			} catch (err) {
 				const errorMessage = err instanceof Error ? err.message : 'Unknown error';
 				console.error('Error loading events:', errorMessage);
 				setError(errorMessage);
 			} finally {
-				// In any case, turn off the download
 				setLoading(false);
 			}
 		};
@@ -72,14 +96,20 @@ export function useEvents() {
 				throw new Error(errorText || 'Failed to register');
 			}
 
-			// Предполагаем, что сервер возвращает обновлённое событие
-			const updatedEvent: EventsInterface = await response.json();
+			const rawUpdatedEvent: any = await response.json();
 
-			// Обновляем локальный список событий
-			setEvents((prev) => prev.map((event) => (event.id === eventId ? updatedEvent : event)));
+			const cleanUpdatedEvent = {
+				...rawUpdatedEvent,
+				addedDate: typeof rawUpdatedEvent.addedDate === 'string' ? rawUpdatedEvent.addedDate : '—',
+				participants: isNaN(Number(String(rawUpdatedEvent.participants).replace(/\s/g, '')))
+					? 0
+					: Number(String(rawUpdatedEvent.participants).replace(/\s/g, '')),
+				price: isNaN(Number(String(rawUpdatedEvent.price).replace(/\s/g, '')))
+					? 0
+					: Number(String(rawUpdatedEvent.price).replace(/\s/g, '')),
+			};
 
-			// Успешно — можно показать уведомление или ничего не делать
-			// Alert.alert('Success', 'You are now registered for this event!');
+			setEvents((prev) => prev.map((event) => (event.id === eventId ? cleanUpdatedEvent : event)));
 		} catch (err) {
 			const errorMessage = err instanceof Error ? err.message : 'Unknown error';
 			console.error('Registration error:', errorMessage);

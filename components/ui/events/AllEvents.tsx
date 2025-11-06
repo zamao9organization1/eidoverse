@@ -4,7 +4,9 @@ import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
 import { EventsDifficulty, EventsStatus, useEvents } from '@/hooks/useEvents';
 import { usePagination } from '@/hooks/usePagination';
-import { useEffect, useMemo, useState } from 'react';
+import { formatNumberWithSpaces } from '@/utils/formatting';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback, useMemo, useState } from 'react';
 import {
 	ActivityIndicator,
 	Alert,
@@ -72,6 +74,7 @@ const getBadgeStyle = (
 export default function AllEvents() {
 	// We get event data through a custom hook
 	const { events, loading, error, registerForEvent } = useEvents();
+	const ITEMS_PER_PAGE = 10;
 
 	// The current state of the event filter.
 	const [statusFilterItem, setStatusFilterItem] = useState<EventsFilterValue>('all');
@@ -92,11 +95,14 @@ export default function AllEvents() {
 		goToPrevPage,
 		goToNextPage,
 		goToLastPage,
-	} = usePagination(filteredEvents, 6);
+	} = usePagination(filteredEvents, ITEMS_PER_PAGE);
 
-	useEffect(() => {
-		goToFirstPage();
-	}, [statusFilterItem, goToFirstPage]);
+	useFocusEffect(
+		useCallback(() => {
+			setStatusFilterItem('all');
+			goToFirstPage();
+		}, [])
+	);
 
 	// Show a loading indicator while the data is being loaded
 	if (loading) {
@@ -128,7 +134,10 @@ export default function AllEvents() {
 							statusFilterItem === element.value && styles.statusFilterItemIsActive,
 						]}
 						key={element.value}
-						onPress={() => setStatusFilterItem(element.value)}
+						onPress={() => {
+							setStatusFilterItem(element.value);
+							goToFirstPage();
+						}}
 					>
 						<Text
 							style={[
@@ -149,7 +158,10 @@ export default function AllEvents() {
 					No events found. Try changing the filter or check back later.
 				</Text>
 			) : (
-				<View style={[styles.eventsList, totalPages > 1 && { marginBottom: 0 }]}>
+				<View
+					key={statusFilterItem}
+					style={[styles.eventsList, totalPages > 1 && { marginBottom: 0 }]}
+				>
 					{/* Events items */}
 					{currentItems.map((element) => {
 						// Getting colors through mappings — cleaner and safer
@@ -214,7 +226,7 @@ export default function AllEvents() {
 											size={18}
 										/>
 										<Text style={[typographyGlobal.textSmTight, { color: Colors.textDisabled }]}>
-											{element.participants}
+											{formatNumberWithSpaces(element.participants)}
 										</Text>
 									</View>
 
@@ -235,7 +247,7 @@ export default function AllEvents() {
 									<View style={[stylesGLobal.price, { flex: 1 }]}>
 										<IconPrice stroke={Colors.green} fill={Colors.green} size={18} />
 										<Text style={[typographyGlobal.titleCaption, { color: Colors.green }]}>
-											{element.price} EIDO
+											{formatNumberWithSpaces(element.price)} EIDO
 										</Text>
 									</View>
 
@@ -310,7 +322,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		gap: 14,
-		padding: 6,
 		marginTop: 20,
 	},
 	statusFilterItem: {
@@ -348,6 +359,7 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 14,
+		minHeight: 34,
 	},
 
 	// Badges

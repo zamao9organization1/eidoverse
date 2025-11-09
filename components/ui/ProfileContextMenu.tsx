@@ -1,14 +1,10 @@
-import {
-	IconCoin,
-	IconHelp,
-	IconLogOut,
-	IconLvl,
-	IconProfile,
-	IconTheme,
-} from '@/components/ui/Icons';
+import { IconCoin, IconHelp, IconLogOut, IconLvl, IconProfile } from '@/components/ui/Icons';
 import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
+import { useAuth } from '@/context/AuthContext';
+import { useProfile } from '@/context/UserContext';
+import { formatNumberWithSpacesOrAbbr } from '@/utils/formatting';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -23,24 +19,22 @@ interface ProfileContextMenuProps {
 
 export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible, onClose }) => {
 	const router = useRouter();
-
 	// Get safe area insets to avoid notches/status bar
 	const insets = useSafeAreaInsets();
-
-	// Local state: manages dark theme toggle
-	const [checked, setChecked] = React.useState<boolean>(true);
+	const { user } = useAuth();
+	const { profile } = useProfile();
 
 	// Early return: don't render anything if menu is hidden
 	if (!visible) return null;
+
+	const balance = formatNumberWithSpacesOrAbbr(profile?.balance ?? 0);
+	const cloneLvl = profile?.cloneLvl ?? 0;
 
 	// Handler: executes action and auto-closes menu (except for toggle switch)
 	const handleMenuItemPress = (action: () => void) => {
 		action();
 		onClose();
 	};
-
-	const balance = 3000;
-	const cloneLvl = 25;
 
 	return (
 		<GestureHandlerRootView style={StyleSheet.absoluteFill}>
@@ -70,8 +64,8 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 
 						{/* User name/email */}
 						<View style={styles.user}>
-							<Text style={typographyGlobal.titleH3Tight}>Jimmi Winchester</Text>
-							<Text style={[typographyGlobal.titleCaption, styles.mail]}>blabla@gmail.com</Text>
+							<Text style={typographyGlobal.titleH3Tight}>{user?.name}</Text>
+							<Text style={[typographyGlobal.titleCaption, styles.mail]}>{user?.email}</Text>
 						</View>
 					</TouchableOpacity>
 
@@ -99,25 +93,6 @@ export const ProfileContextMenu: React.FC<ProfileContextMenuProps> = ({ visible,
 							<Text style={typographyGlobal.titleH3Tight}>Clone lvl:</Text>
 							<Text style={[typographyGlobal.titleH3Tight, styles.lvl]}>{cloneLvl}</Text>
 						</View>
-					</View>
-
-					{/* Theme */}
-					<View style={styles.item}>
-						{/* Theme icon */}
-						<IconTheme stroke={Colors.text} fill={Colors.text} size={24} />
-
-						<Text style={typographyGlobal.titleH3Tight}>Dark theme</Text>
-
-						{/* Theme switcher */}
-						<Pressable
-							style={[styles.track, checked ? styles.trackOn : styles.trackOff, { flexShrink: 0 }]}
-							onPress={() => setChecked(!checked)} // переключатель не закрывает меню
-							accessibilityRole='switch'
-							accessibilityState={{ checked }}
-							accessibilityLabel='Переключить темную тему'
-						>
-							<View style={styles.thumb} />
-						</Pressable>
 					</View>
 
 					{/* Help center */}

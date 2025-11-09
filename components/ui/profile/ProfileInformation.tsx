@@ -1,7 +1,7 @@
 import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
-import { useProfileUser } from '@/hooks/useProfileUser';
+import { useAuth } from '@/context/AuthContext';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
@@ -16,7 +16,7 @@ import {
 } from '../Icons';
 
 export default function ProfileInformation() {
-	const { user, loading, error } = useProfileUser();
+	const { user, loading } = useAuth();
 
 	const userLocation = 'San Francisco, CA';
 	const userTwitter = 'digitaldreamer';
@@ -32,14 +32,6 @@ export default function ProfileInformation() {
 		return (
 			<View style={[stylesGLobal.container, styles.scrollWrapper, { paddingTop: 20 }]}>
 				<ActivityIndicator size='large' color={Colors.textDisabled} />
-			</View>
-		);
-	}
-
-	if (error) {
-		return (
-			<View style={[stylesGLobal.container, styles.scrollWrapper, { paddingTop: 20 }]}>
-				<Text style={typographyGlobal.textBase}>Error: {error}</Text>
 			</View>
 		);
 	}

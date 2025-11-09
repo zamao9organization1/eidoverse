@@ -4,7 +4,7 @@ import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
 import { EventsDifficulty, EventsStatus, useEvents } from '@/hooks/useEvents';
 import { usePagination } from '@/hooks/usePagination';
-import { formatNumberWithSpaces } from '@/utils/formatting';
+import { formatNumberWithSpacesOrAbbr } from '@/utils/formatting';
 import { useFocusEffect } from '@react-navigation/native';
 import { useCallback, useMemo, useState } from 'react';
 import {
@@ -226,7 +226,7 @@ export default function AllEvents() {
 											size={18}
 										/>
 										<Text style={[typographyGlobal.textSmTight, { color: Colors.textDisabled }]}>
-											{formatNumberWithSpaces(element.participants)}
+											{formatNumberWithSpacesOrAbbr(element.participants)}
 										</Text>
 									</View>
 
@@ -247,7 +247,7 @@ export default function AllEvents() {
 									<View style={[stylesGLobal.price, { flex: 1 }]}>
 										<IconPrice stroke={Colors.green} fill={Colors.green} size={18} />
 										<Text style={[typographyGlobal.titleCaption, { color: Colors.green }]}>
-											{formatNumberWithSpaces(element.price)} EIDO
+											{formatNumberWithSpacesOrAbbr(element.price)} EIDO
 										</Text>
 									</View>
 

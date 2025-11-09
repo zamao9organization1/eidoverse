@@ -1,5 +1,6 @@
 import { ProfileContextMenu } from '@/components/ui/ProfileContextMenu';
 import { AuthProvider } from '@/context/AuthContext';
+import { UserProvider } from '@/context/UserContext';
 import { ProfileContextMenuProvider, useProfileContextMenu } from '@/hooks/useProfileContextMenu';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -15,9 +16,11 @@ SplashScreen.preventAutoHideAsync(); // Preventing automatic hiding of the splas
 export default function RootLayout() {
 	return (
 		<AuthProvider>
-			<ProfileContextMenuProvider>
-				<RootLayoutContent />
-			</ProfileContextMenuProvider>
+			<UserProvider>
+				<ProfileContextMenuProvider>
+					<RootLayoutContent />
+				</ProfileContextMenuProvider>
+			</UserProvider>
 		</AuthProvider>
 	);
 }

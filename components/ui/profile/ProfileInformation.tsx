@@ -2,33 +2,32 @@ import { Colors } from '@/constants/colors';
 import { stylesGLobal } from '@/constants/styles';
 import { typographyGlobal } from '@/constants/typography';
 import { useAuth } from '@/context/AuthContext';
+import { useProfile } from '@/context/UserContext';
+import { formatNumberWithSpaces } from '@/utils/formatting';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
 	IconAchievements,
 	IconCalendar,
 	IconChat,
+	IconCompetition,
 	IconGitHub,
 	IconLvl,
 	IconNetwork,
 	IconPensil,
+	IconTasks,
 	IconTwitter,
 } from '../Icons';
 
 export default function ProfileInformation() {
 	const { user, loading } = useAuth();
+	const { profile, loading: profileLoading, updateProfile } = useProfile();
 
 	const userLocation = 'San Francisco, CA';
 	const userTwitter = 'digitaldreamer';
 	const userGitHub = 'digitaldreamer';
 
-	// Stats
-	const daysActiveCount = '127';
-	const totalChatsCount = '2 431';
-	const eidoLevel = '7';
-	const achievementsCount = '24';
-
-	if (loading) {
+	if (loading || profileLoading) {
 		return (
 			<View style={[stylesGLobal.container, styles.scrollWrapper, { paddingTop: 20 }]}>
 				<ActivityIndicator size='large' color={Colors.textDisabled} />
@@ -36,10 +35,10 @@ export default function ProfileInformation() {
 		);
 	}
 
-	if (!user) {
+	if (!user || !profile) {
 		return (
 			<View style={[stylesGLobal.container, styles.scrollWrapper, { paddingTop: 20 }]}>
-				<Text style={typographyGlobal.textBase}>User not found</Text>
+				<Text style={typographyGlobal.textBase}>Profile not loaded</Text>
 			</View>
 		);
 	}
@@ -133,7 +132,7 @@ export default function ProfileInformation() {
 							<IconCalendar fill={Colors.text} stroke={Colors.text} size={24} />
 							<Text style={[typographyGlobal.textBase]}>Days active</Text>
 							<Text style={[typographyGlobal.textBase, styles.statsItemCountText]}>
-								{daysActiveCount}
+								{profile?.daysActive}
 							</Text>
 						</View>
 
@@ -142,7 +141,7 @@ export default function ProfileInformation() {
 							<IconChat fill={Colors.text} stroke={Colors.text} size={24} />
 							<Text style={[typographyGlobal.textBase]}>Total chats</Text>
 							<Text style={[typographyGlobal.textBase, styles.statsItemCountText]}>
-								{totalChatsCount}
+								{formatNumberWithSpaces(profile?.totalChats)}
 							</Text>
 						</View>
 
@@ -151,7 +150,7 @@ export default function ProfileInformation() {
 							<IconLvl fill={Colors.text} stroke={Colors.text} size={24} />
 							<Text style={[typographyGlobal.textBase]}>Eido level</Text>
 							<Text style={[typographyGlobal.textBase, styles.statsItemCountText]}>
-								{eidoLevel}
+								{profile?.eidoLvl}
 							</Text>
 						</View>
 
@@ -160,7 +159,25 @@ export default function ProfileInformation() {
 							<IconAchievements fill={Colors.text} stroke={Colors.text} size={24} />
 							<Text style={[typographyGlobal.textBase]}>Achievements</Text>
 							<Text style={[typographyGlobal.textBase, styles.statsItemCountText]}>
-								{achievementsCount}
+								{formatNumberWithSpaces(profile?.achievements)}
+							</Text>
+						</View>
+
+						{/* Tasks */}
+						<View style={[styles.statsItem]}>
+							<IconTasks fill={Colors.text} stroke={Colors.text} size={24} />
+							<Text style={[typographyGlobal.textBase]}>Tasks</Text>
+							<Text style={[typographyGlobal.textBase, styles.statsItemCountText]}>
+								{formatNumberWithSpaces(profile?.completedTasks)}
+							</Text>
+						</View>
+
+						{/* Leaderboard rating */}
+						<View style={[styles.statsItem]}>
+							<IconCompetition fill={Colors.text} stroke={Colors.text} size={24} />
+							<Text style={[typographyGlobal.textBase]}>Rating</Text>
+							<Text style={[typographyGlobal.textBase, styles.statsItemCountText]}>
+								{formatNumberWithSpaces(profile?.rating)}
 							</Text>
 						</View>
 					</View>

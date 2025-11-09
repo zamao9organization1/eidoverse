@@ -1,3 +1,15 @@
+/**
+ * Formats number with spaces (e.g., 1234567 → "1 234 567")
+ */
+export const formatNumberWithSpaces = (num: number): string => {
+	if (!Number.isFinite(num)) return '0';
+
+	const isNegative = num < 0;
+	const absoluteNum = Math.abs(num);
+	const formatted = absoluteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+	return isNegative ? `-${formatted}` : formatted;
+};
+
 /* Formats a number:
  	- up to 99,999 → with spaces: 1 356, 99 999
 	- from 100,000 → abbreviated: 100k, 1.5M, 2.3B, 1.2T
@@ -10,8 +22,7 @@ export const formatNumberWithSpacesOrAbbr = (num: number): string => {
 	const absoluteNum = Math.abs(num);
 
 	if (absoluteNum < 100_000) {
-		// We use your existing format for numbers < 100k
-		const formatted = absoluteNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+		const formatted = formatNumberWithSpaces(absoluteNum);
 		return isNegative ? `-${formatted}` : formatted;
 	}
 
@@ -35,5 +46,6 @@ export const formatNumberWithSpacesOrAbbr = (num: number): string => {
 		}
 	}
 
-	return absoluteNum.toString();
+	const fallback = formatNumberWithSpaces(absoluteNum);
+	return isNegative ? `-${fallback}` : fallback;
 };
